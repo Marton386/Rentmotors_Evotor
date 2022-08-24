@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/searchBookFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.rentmotors.evotorapp.presentation.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" />
+
+    <fragment
+        android:id="@+id/bookingDetailsFragment"
+        android:name="com.rentmotors.evotorapp.presentation.bookingDetails.BookingDetailsFragment"
+        android:label="@string/sale"
+        tools:layout="@layout/fragment_booking_details">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchBookFragment"
+        android:name="com.rentmotors.evotorapp.presentation.searchBook.SearchBookFragment"
+        android:label="@string/search_contract"
+        tools:layout="@layout/fragment_search_book">
+        <action
+            android:id="@+id/action_searchBookFragment_to_bookingDetailsFragment"
+            app:destination="@id/bookingDetailsFragment" />
+        <action
+            android:id="@+id/action_searchBookFragment_to_authorizationFragment"
+            app:destination="@id/authorizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorizationFragment"
+        android:name="com.rentmotors.evotorapp.presentation.authorization.AuthorizationFragment"
+        android:label="@string/device_information"
+        tools:layout="@layout/fragment_authorization"/>
+
+
+</navigation>

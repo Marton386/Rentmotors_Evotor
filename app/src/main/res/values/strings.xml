@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Rentmotors</string>
+    <string name="enter_res_number">Enter contract number</string>
+    <string name="search_contract">Search contract</string>
+    <string name="contract_number">Contract number</string>
+    <string name="total">Total</string>
+    <string name="pay">Pay</string>
+    <string name="check_was_send_on">Check will send</string>
+    <string name="rub" translatable="false">%s ₽</string>
+    <string name="contract">Contract</string>
+    <string name="sale">Sale</string>
+    <string name="app_version" translatable="false">v. %s</string>
+    <string name="to_pay">To pay</string>
+    <string name="quantity" translatable="false">x %d</string>
+    <string name="enter_kkm_number">Enter the terminal number</string>
+    <string name="done">Done</string>
+    <string name="contact_the_supervizor">To obtain a cash register number, contact the supervisor</string>
+    <string name="device_information">Device information</string>
+    <string name="error">Error while loading data</string>
+    <string name="sending_error">An error occurred while sending data to the server.</string>
+    <string name="last_send_error">An error occurred while sending data to the server.\nContact your regional manager</string>
+    <string name="authorization_error">Authorization error</string>
+    <string name="contract_not_found">Contract not found</string>
+    <string name="contract_not_allowed_for_this_terminal">A contract not available for pay on this terminal</string>
+    <string name="check_the_internet_connection">Please check the internet connection</string>
+    <string name="error_label">Error</string>
+    <string name="try_again">Try again</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="rental_agreement_number">RENTAL AGREEMENT number</string>
+    <string name="check_kkm_number_enter_correct">Please check the kkm number is enter correct</string>
+</resources>

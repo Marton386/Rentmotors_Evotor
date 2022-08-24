@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Рентмоторс</string>
+    <string name="enter_res_number">Введите номер договора</string>
+    <string name="search_contract">Поиск договора</string>
+    <string name="contract_number">Номер договора</string>
+    <string name="total">Итого</string>
+    <string name="pay">Оплатить</string>
+    <string name="check_was_send_on">Чек будет отправлен</string>
+    <string name="contract">Договор</string>
+    <string name="sale">Продажа</string>
+    <string name="to_pay">К оплате</string>
+    <string name="enter_kkm_number">Введите номер KKM</string>
+    <string name="done">Готово</string>
+    <string name="contact_the_supervizor">Для получения номера ККМ обратитесь к супервайзеру</string>
+    <string name="device_information">Информация об устройстве</string>
+    <string name="error">Ошибка при загрузке данных</string>
+    <string name="sending_error">Ошибка при отправке данных на сервер</string>
+    <string name="last_send_error">Ошибка при отправке данных на сервер.\nОбратитесь к вашему региональному менеджеру</string>
+    <string name="authorization_error">Ошибка авторизации</string>
+    <string name="contract_not_found">Договор не найден</string>
+    <string name="contract_not_allowed_for_this_terminal">Невозможно оплатить указанный договор на данной кассе</string>
+    <string name="error_label">Ошибка</string>
+    <string name="try_again">Попробовать ещё раз</string>
+    <string name="cancel">Отмена</string>
+    <string name="ok">Ок</string>
+    <string name="check_the_internet_connection">Проверьте подключение к интернету</string>
+    <string name="rental_agreement_number">Номер RENTAL AGREEMENT</string>
+    <string name="check_kkm_number_enter_correct">Проверьте правильность ввода номера ККМ</string>
+</resources>

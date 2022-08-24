@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rentmotors.evotorapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.rentmotors.evotorapp.presentation.AppBase"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Rentmotors">
+        <activity
+            android:name="com.rentmotors.evotorapp.presentation.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="ru.evotor.launcher.BACKGROUND_COLOR"
+                android:value="@color/rm_green" />
+
+            <intent-filter>
+                <!-- Указывает, что иконка приложения будет отображаться на главном экране смарт-терминала. -->
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.EVOTOR" />
+            </intent-filter>
+
+        </activity>
+
+        <meta-data android:name="app_uuid" android:value="5cda87e4-6d81-4cc1-9049-a5327df29bd7"/>
+
+        <receiver
+            android:name="com.rentmotors.evotorapp.presentation.OpenReceiptBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="evotor.intent.action.receipt.sell.OPENED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.rentmotors.evotorapp.presentation.ClosedReceiptBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="evotor.intent.action.receipt.sell.CLOSED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,25 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Rentmotors" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/dark_gray</item>
+        <item name="colorOnPrimary">@color/dark_gray</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/green</item>
+        <item name="colorSecondaryVariant">@color/green</item>
+        <item name="colorOnSecondary">@color/dark_gray</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="color_inactive_button">@color/dark_gray</item>
+        <item name="colorPrimaryDark">@color/dark_gray</item>
+        <item name="android:colorBackground">@color/gray</item>
+        <item name="android:navigationBarColor">@color/dark_gray</item>
+        <item name="color_text_primary">@color/white</item>
+        <item name="color_text_extra">@color/gray_light</item>
+        <item name="color_background_primary">@color/gray</item>
+        <item name="color_background_extra">@color/dark_gray</item>
+
+    </style>
+</resources>

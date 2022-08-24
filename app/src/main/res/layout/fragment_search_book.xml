@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.rentmotors.evotorapp.presentation.searchBook.SearchBookViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutResNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/gapMedium"
+            android:layout_marginTop="@dimen/gapLarge"
+            android:layout_marginEnd="@dimen/gapMedium"
+            android:background="?attr/colorPrimaryDark"
+            android:enabled="@{!viewModel.loadingState}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etResNumber"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:hint="@string/enter_res_number"
+                android:inputType="number|text"
+                android:nextFocusDown="@id/lnSearchBook"
+                android:text="@={viewModel.resNumber}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tvHelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gapMedium"
+            android:gravity="center_horizontal"
+            android:text="@string/rental_agreement_number"
+            android:textColor="?attr/color_text_extra"
+            app:layout_constraintEnd_toEndOf="@id/layoutResNumber"
+            app:layout_constraintStart_toStartOf="@id/layoutResNumber"
+            app:layout_constraintTop_toBottomOf="@id/layoutResNumber" />
+
+        <ProgressBar
+            android:id="@+id/pbLoad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gapLarge"
+            android:layout_marginBottom="@dimen/gapMedium"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/tvVersion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/gapMedium"
+            app:layout_constraintBottom_toTopOf="@+id/lnSearchBook"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="?attr/color_text_extra"
+            tools:text="v.1.0.1" />
+
+        <LinearLayout
+            android:id="@+id/lnSearchBook"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/gapMedium"
+            android:enabled="@{viewModel.searchButtonEnabled}"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                style="@style/ButtonTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/search_contract" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
