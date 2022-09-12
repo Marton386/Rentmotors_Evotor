@@ -1,7 +1,6 @@
 package com.rentmotors.evotorapp.presentation.searchBook
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rentmotors.evotorapp.R
@@ -24,7 +23,7 @@ class SearchBookViewModel @Inject constructor(
     private val getDeviceInfoUseCase: GetDeviceInfoUseCase,
 ) : ViewModel() {
 
-    val resNumber = MutableStateFlow<String>("")
+    val resNumber = MutableStateFlow("")
 
     private val _state = MutableStateFlow<SearchBookState>(SearchBookState.Empty)
     val state: StateFlow<SearchBookState> = _state
@@ -47,9 +46,9 @@ class SearchBookViewModel @Inject constructor(
         return settingsHelper.getKkmNumber().isNotEmpty()
     }
 
-    fun getUuidReceipt() : String {
+    /*fun getUuidReceipt() : String {
         return settingsHelper.getReceiptUuid()
-    }
+    }*/
 
     fun clearResNumber(){
         if (resNumber.value.isNotEmpty()) {
@@ -65,10 +64,8 @@ class SearchBookViewModel @Inject constructor(
             if (kkmNumber.isNotEmpty()) {
                 viewModelScope.launch(Dispatchers.IO) {
                     _state.value = SearchBookState.Loading
-
                     when (val result = getDeviceInfoUseCase(kkmNumber)) {
                         is Result.Success -> {
-                            //_state.value = AuthorizationViewModel.CheckDeviceState.Success(result.data)
                             searchBook(context)
                         }
                         is Result.Error -> {

@@ -9,15 +9,16 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.rentmotors.evotorapp.presentation.utils.PriceFormatter
 import com.rentmotors.evotorapp.R
 import com.rentmotors.evotorapp.databinding.FragmentBookingDetailsBinding
 import com.rentmotors.evotorapp.databinding.ItemCheckPositionBinding
 import com.rentmotors.evotorapp.domain.entities.BookReceipt
 import com.rentmotors.evotorapp.presentation.searchBook.BookViewModel
+import com.rentmotors.evotorapp.presentation.utils.PriceFormatter
 import com.rentmotors.evotorapp.presentation.utils.showErrorDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import ru.evotor.framework.core.IntegrationException
 import ru.evotor.framework.core.IntegrationManagerFuture
 import ru.evotor.framework.core.action.command.open_receipt_command.OpenSellReceiptCommand
 import ru.evotor.framework.core.action.event.receipt.changes.position.PositionAdd
@@ -28,6 +29,7 @@ import ru.evotor.framework.receipt.Position
 import ru.evotor.framework.receipt.TaxNumber
 import java.math.BigDecimal
 import java.util.*
+
 
 @AndroidEntryPoint
 class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
@@ -47,7 +49,6 @@ class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
                 val intent = result.data
-                // Handle the Intent
                 bookingDetailsViewModel.sendPaymentInfo(requireContext())
             } else {
                 binding.lnToPay.isEnabled = true
@@ -163,7 +164,10 @@ class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
                         showErrorDialog(e.stackTraceToString())
                     }
                 }
-            } catch (e: Exception) {
+            } catch (e: IntegrationException) {
+                e.printStackTrace()
+                showErrorDialog("Something went wrong: ${e.stackTraceToString()}")
+            }catch (e: Exception) {
                 e.printStackTrace()
                 showErrorDialog("Something went wrong: ${e.message}")
             }

@@ -14,7 +14,8 @@
         app:titleTextColor="?attr/color_text_primary"
         app:subtitleTextColor="?attr/color_text_primary"
         tools:text="Title"
-        android:background="?attr/colorPrimaryDark"/>
+        android:background="?attr/colorPrimaryDark">
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"

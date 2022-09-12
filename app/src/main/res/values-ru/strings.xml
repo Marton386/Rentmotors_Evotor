@@ -2,14 +2,19 @@
 <resources>
     <string name="app_name">Рентмоторс</string>
     <string name="enter_res_number">Введите номер договора</string>
+    <string name="search_contract_for_sell">Поиск договора для оплаты</string>
+    <string name="search_contract_for_refund">Поиск договора для возврата</string>
     <string name="search_contract">Поиск договора</string>
     <string name="contract_number">Номер договора</string>
     <string name="total">Итого</string>
     <string name="pay">Оплатить</string>
     <string name="check_was_send_on">Чек будет отправлен</string>
     <string name="contract">Договор</string>
+    <string name="refund">Возврат</string>
     <string name="sale">Продажа</string>
     <string name="to_pay">К оплате</string>
+    <string name="to_extradition">К выдаче</string>
+    <string name="choose_extradition">Выберите позиции за которые нужно вернуть средства</string>
     <string name="enter_kkm_number">Введите номер KKM</string>
     <string name="done">Готово</string>
     <string name="contact_the_supervizor">Для получения номера ККМ обратитесь к супервайзеру</string>

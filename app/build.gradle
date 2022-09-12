@@ -10,9 +10,9 @@ android {
     signingConfigs {
         release {
             storeFile file('/Users/chronos_386/AndroidStudioProjects/MyKeyStores/rentmotorsEvotorKeystore.jks')
-            storePassword '91aOqKJOLK'
+            storePassword 'Tpicf77R'
             keyAlias 'rentmotors_key'
-            keyPassword '91aOqKJOLK'
+            keyPassword 'Tpicf77R'
         }
     }
     compileSdk 31
@@ -21,7 +21,7 @@ android {
         applicationId "com.rentmotors.evotorapp"
         minSdk 23
         targetSdk 31
-        versionCode 48
+        versionCode 49
         versionName '1.2.6'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

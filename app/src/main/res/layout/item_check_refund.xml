@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:background="?attr/color_background_extra">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/gapMedium"
+        android:textColor="?attr/color_text_primary"
+        android:textSize="16sp"
+        android:ellipsize="end"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Аренда ТС. Продление" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/gapMedium"
+        android:layout_marginBottom="@dimen/gapMedium"
+        android:textSize="16sp"
+        android:textColor="?attr/color_text_extra"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintTop_toBottomOf="@+id/tvName"
+        tools:text="10000" />
+
+    <TextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginStart="@dimen/gapXSmall"
+        android:textColor="?attr/color_text_extra"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvPrice"
+        app:layout_constraintStart_toEndOf="@+id/tvPrice"
+        tools:text="x 7" />
+
+    <TextView
+        android:id="@+id/tvAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gapMedium"
+        android:textColor="?attr/color_text_primary"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvPrice"
+        app:layout_constraintStart_toEndOf="@+id/tvQuantity"
+        tools:text="100000" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="@dimen/gapMedium"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAmount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

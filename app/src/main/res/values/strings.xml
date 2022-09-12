@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Rentmotors</string>
     <string name="enter_res_number">Enter contract number</string>
+    <string name="search_contract_for_sell">Search for a payment contract</string>
+    <string name="search_contract_for_refund">Search for a refund contract</string>
     <string name="search_contract">Search contract</string>
     <string name="contract_number">Contract number</string>
     <string name="total">Total</string>
+    <string name="refund">Refund</string>
     <string name="pay">Pay</string>
     <string name="check_was_send_on">Check will send</string>
     <string name="rub" translatable="false">%s ₽</string>
@@ -11,6 +14,8 @@
     <string name="sale">Sale</string>
     <string name="app_version" translatable="false">v. %s</string>
     <string name="to_pay">To pay</string>
+    <string name="choose_extradition">Select the items for which you want to return the funds</string>
+    <string name="to_extradition">To extradition</string>
     <string name="quantity" translatable="false">x %d</string>
     <string name="enter_kkm_number">Enter the terminal number</string>
     <string name="done">Done</string>
