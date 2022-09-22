@@ -5,4 +5,5 @@ import com.rentmotors.evotorapp.domain.entities.BookReceipt
 
 interface ReceiptDataSource {
     suspend fun getReceipt(resNumber: String): Result<BookReceipt>
+    suspend fun getRefund(resNumber: String): Result<BookReceipt>
 }

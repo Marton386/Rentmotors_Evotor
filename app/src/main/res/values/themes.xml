@@ -31,6 +31,12 @@
         <item name="android:gravity">center_vertical</item>
     </style>
 
+    <style name="ButtonRefund">
+        <item name="android:layout_height">100dp</item>
+        <item name="android:background">@drawable/button_refund_ripple</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
     <style name="ButtonTitle">
         <item name="android:layout_margin">@dimen/gapMedium</item>
         <item name="android:textSize">25sp</item>

@@ -35,17 +35,11 @@ class SettingsHelper(context: Context) {
     }
 
     fun setReceiptUuid(uuid: String) {
-        preferences.edit()
-            .putString(UUID_RECEIPT, uuid)
-            .apply()
+        preferences.edit().putString(UUID_RECEIPT, uuid).apply()
     }
 
     fun getReceiptUuid(): String {
-        val uuid = preferences.getString(UUID_RECEIPT, "")
-        return if (uuid.isNullOrBlank()) // Это условие лишнее, все равно всегда пустая строка будет, можно сразу uuid возвращать
-            ""
-        else
-            uuid
+        return preferences.getString(UUID_RECEIPT, "") ?: ""
     }
 
     fun setBookReceipt(bookReceipt: BookReceipt) {

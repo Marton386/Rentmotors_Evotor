@@ -31,17 +31,7 @@
             android:id="@+id/action_searchBookFragment_to_authorizationFragment"
             app:destination="@id/authorizationFragment" />
         <action
-            android:id="@+id/action_searchBookFragment_to_searchRefundFragment"
-            app:destination="@id/searchRefundFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/searchRefundFragment"
-        android:name="com.rentmotors.evotorapp.presentation.searchRefund.SearchRefundFragment"
-        android:label="@string/search_contract_for_refund"
-        tools:layout="@layout/fragment_search_book">
-        <action
-            android:id="@+id/action_searchRefundFragment_to_refundDetailsFragment"
+            android:id="@+id/action_searchBookFragment_to_refundDetailsFragment"
             app:destination="@id/refundDetailsFragment" />
     </fragment>
 

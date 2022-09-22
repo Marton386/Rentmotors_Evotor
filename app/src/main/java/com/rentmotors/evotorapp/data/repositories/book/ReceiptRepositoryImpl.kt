@@ -10,4 +10,8 @@ class ReceiptRepositoryImpl(
     override suspend fun getReceipt(resNumber: String): Result<BookReceipt> {
         return receiptDataSource.getReceipt(resNumber)
     }
+
+    override suspend fun getRefund(resNumber: String): Result<BookReceipt> {
+        return receiptDataSource.getRefund(resNumber)
+    }
 }

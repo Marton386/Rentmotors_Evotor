@@ -9,6 +9,7 @@ import com.rentmotors.evotorapp.domain.common.Result
 import com.rentmotors.evotorapp.domain.entities.BookReceipt
 import com.rentmotors.evotorapp.domain.usecases.GetDeviceInfoUseCase
 import com.rentmotors.evotorapp.domain.usecases.GetReceiptUseCase
+import com.rentmotors.evotorapp.domain.usecases.GetRefundUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -20,6 +21,7 @@ import javax.inject.Inject
 class SearchBookViewModel @Inject constructor(
     private val settingsHelper: SettingsHelper,
     private val getReceiptUseCase: GetReceiptUseCase,
+    private val getRefundUseCase: GetRefundUseCase,
     private val getDeviceInfoUseCase: GetDeviceInfoUseCase,
 ) : ViewModel() {
 
@@ -39,7 +41,11 @@ class SearchBookViewModel @Inject constructor(
     }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
     fun getBook(context: Context){
-        checkDevice(context)
+        checkDevice(context, true)
+    }
+
+    fun getRefundBook(context: Context){
+        checkDevice(context, false)
     }
 
     fun isKkmNumberSet() : Boolean {
@@ -58,7 +64,7 @@ class SearchBookViewModel @Inject constructor(
         }
     }
 
-    private fun checkDevice(context: Context) {
+    private fun checkDevice(context: Context, bookRefund: Boolean) {
         try {
             val kkmNumber = settingsHelper.getKkmNumber()
             if (kkmNumber.isNotEmpty()) {
@@ -66,7 +72,10 @@ class SearchBookViewModel @Inject constructor(
                     _state.value = SearchBookState.Loading
                     when (val result = getDeviceInfoUseCase(kkmNumber)) {
                         is Result.Success -> {
-                            searchBook(context)
+                            if(bookRefund)
+                                searchBook(context)
+                            else
+                                searchRefundBook(context)
                         }
                         is Result.Error -> {
                             withContext(Dispatchers.Main) {
@@ -86,6 +95,23 @@ class SearchBookViewModel @Inject constructor(
 
     private suspend fun searchBook(context: Context) {
         val result = getReceiptUseCase(resNumber.value)
+        withContext(Dispatchers.Main) {
+            when (result) {
+                is Result.Success -> {
+                    _state.value = SearchBookState.Success(result.data)
+                    _goToDetailScreenEvent.emit(result.data)
+                    settingsHelper.setBookReceipt(result.data)
+                }
+                is Result.Error -> {
+                    val message = result.message ?: context.getString(R.string.error)
+                    _state.value = SearchBookState.Error(message)
+                }
+            }
+        }
+    }
+
+    private suspend fun searchRefundBook(context: Context) {
+        val result = getRefundUseCase(resNumber.value)
         withContext(Dispatchers.Main) {
             when (result) {
                 is Result.Success -> {

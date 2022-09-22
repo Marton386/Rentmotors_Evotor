@@ -31,6 +31,7 @@ class SearchBookFragment : Fragment(R.layout.fragment_search_book) {
     private val searchBookViewModel: SearchBookViewModel by viewModels()
     private var _binding: FragmentSearchBookBinding? = null
     private val binding get() = _binding!!
+    private var opr = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,27 +43,16 @@ class SearchBookFragment : Fragment(R.layout.fragment_search_book) {
         searchBookViewModel.clearResNumber()
 
         binding.lnSearchBook.setOnClickListener {
+            opr = 1
             searchBookViewModel.getBook(requireContext())
         }
 
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.search_menu, menu)
-            }
+        binding.lnSearchRefundBook.setOnClickListener {
+            opr = 2
+            searchBookViewModel.getRefundBook(requireContext())
+        }
 
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.mi_cancel -> {
-                        findNavController().navigate(
-                            SearchBookFragmentDirections.actionSearchBookFragmentToSearchRefundFragment()
-                        )
-                        true
-                    }
-                    else -> false
-                }
-            }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.search_contract_for_sell)
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.search_contract)
         binding.tvVersion.text = getString(R.string.app_version, BuildConfig.VERSION_NAME)
 
         subscribeUi()
@@ -90,9 +80,16 @@ class SearchBookFragment : Fragment(R.layout.fragment_search_book) {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             searchBookViewModel.goToDetailScreenEvent.collect {
                 viewModel.setBookReceipt(it)
-                val action =
-                    SearchBookFragmentDirections.actionSearchBookFragmentToBookingDetailsFragment()
-                findNavController().navigate(action)
+                if (opr == 1) {
+                    val action =
+                        SearchBookFragmentDirections.actionSearchBookFragmentToBookingDetailsFragment()
+                    findNavController().navigate(action)
+                }
+                else {
+                    val action =
+                        SearchBookFragmentDirections.actionSearchBookFragmentToRefundDetailsFragment()
+                    findNavController().navigate(action)
+                }
             }
         }
     }

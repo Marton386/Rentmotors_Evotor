@@ -8,7 +8,6 @@ import javax.inject.Inject
 @HiltViewModel
 class BookViewModel @Inject constructor(
 ): ViewModel() {
-
     private var bookReceipt: BookReceipt? = null
 
     fun getBook(): BookReceipt? {
@@ -18,6 +17,4 @@ class BookViewModel @Inject constructor(
     fun setBookReceipt(receipt: BookReceipt) {
         bookReceipt = receipt
     }
-
-
 }

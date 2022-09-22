@@ -65,11 +65,17 @@ class BookingDetailsViewModel @Inject constructor(
                             true,
                             Constants.NO_ERROR
                         )
+                    } else {
+                        _state.value = BookingDetailsState.Error("receipt = $receipt")
                     }
+                } else {
+                    _state.value = BookingDetailsState.Error("uuid = $uuid")
                 }
+            } else {
+                _state.value = BookingDetailsState.Error("bookReceipt = $bookReceipt")
             }
         } catch (e: Exception) {
-            e.printStackTrace()
+            _state.value = BookingDetailsState.Error(e.stackTraceToString())
         }
         return null
     }

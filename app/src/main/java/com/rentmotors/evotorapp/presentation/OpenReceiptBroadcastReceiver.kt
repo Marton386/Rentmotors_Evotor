@@ -13,7 +13,7 @@ class OpenReceiptBroadcastReceiver : BroadcastReceiver() {
         if (context != null) {
             val settingsHelper = SettingsHelper(context)
             try {
-                if (receiptUuid != null && context != null) {
+                if (receiptUuid != null) {
                     val receipt = ReceiptApi.getReceipt(context, receiptUuid)
                     if (receipt != null) {
     /*                    Toast.makeText(

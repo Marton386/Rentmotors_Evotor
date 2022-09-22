@@ -8,4 +8,8 @@ interface BookApi {
     @FormUrlEncoded
     @POST("/appconfig/rmadmin/php/evotor/create_evotor_payment.php")
     suspend fun getBook(@Field("offer_id") resNumber: String): Response<BookDTO>
+
+    @FormUrlEncoded
+    @POST("/appconfig/rmadmin/php/evotor/create_evotor_payment_refund.php")
+    suspend fun getRefundBook(@Field("offer_id") resNumber: String): Response<BookDTO>
 }

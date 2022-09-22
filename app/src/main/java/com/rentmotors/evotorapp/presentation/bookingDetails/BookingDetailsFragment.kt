@@ -9,10 +9,11 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.rentmotors.evotorapp.R
 import com.rentmotors.evotorapp.databinding.FragmentBookingDetailsBinding
-import com.rentmotors.evotorapp.databinding.ItemCheckPositionBinding
 import com.rentmotors.evotorapp.domain.entities.BookReceipt
+import com.rentmotors.evotorapp.presentation.adapters.RefundAdapter
 import com.rentmotors.evotorapp.presentation.searchBook.BookViewModel
 import com.rentmotors.evotorapp.presentation.utils.PriceFormatter
 import com.rentmotors.evotorapp.presentation.utils.showErrorDialog
@@ -48,7 +49,6 @@ class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
     private val evotorActivityResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val intent = result.data
                 bookingDetailsViewModel.sendPaymentInfo(requireContext())
             } else {
                 binding.lnToPay.isEnabled = true
@@ -87,7 +87,6 @@ class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
                     }
                     else -> {
                         if(it == BookingDetailsViewModel.BookingDetailsState.Loading)
-                            //binding.svItems.visibility = View.INVISIBLE
                             binding.pbLoad.visibility = View.VISIBLE
                     }
                 }
@@ -113,7 +112,6 @@ class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
         }
     }
 
-    //Обязательно исправить, вместо ScrollView поставить нормальное решение
     private fun setBookReceipt(receipt: BookReceipt) {
         binding.tvAmount.text =
             getString(
@@ -121,21 +119,11 @@ class BookingDetailsFragment : Fragment(R.layout.fragment_booking_details) {
                 PriceFormatter.format(receipt.items.sumOf { it.amount })
             )
 
-        binding.layoutItems.removeAllViews()
-        receipt.items.forEach {
-            val itemBinding = ItemCheckPositionBinding.inflate(
-                layoutInflater,
-                binding.layoutItems,
-                false
-            )
-
-            itemBinding.tvName.text = it.name
-            itemBinding.tvPrice.text = PriceFormatter.format(it.price)
-            itemBinding.tvQuantity.text = getString(R.string.quantity, it.quantity)
-            itemBinding.tvAmount.text = PriceFormatter.format(it.amount)
-
-            binding.layoutItems.addView(itemBinding.root)
-        }
+        val linearLayoutManager = LinearLayoutManager(requireContext())
+        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        binding.recyclerView.layoutManager = linearLayoutManager
+        val adapter = RefundAdapter(requireContext(), receipt.items)
+        binding.recyclerView.adapter = adapter
     }
 
     private fun openReceipt(bookReceipt: BookReceipt) {

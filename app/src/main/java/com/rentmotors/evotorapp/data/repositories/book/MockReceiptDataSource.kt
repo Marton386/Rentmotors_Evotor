@@ -32,6 +32,33 @@ class MockReceiptDataSource : ReceiptDataSource {
             )
         )
     }
+
+    override suspend fun getRefund(resNumber: String): Result<BookReceipt> {
+        delay(2000)
+        return Result.Success(
+            BookReceipt(
+                "143",
+                "32751",
+                "137649",
+                "89189",
+                "add 1 days (26.10 - 27.10)",
+                "anglileon021@gmail.com",
+                "",
+                "osn",
+                "https://rentmotors.ru/appconfig/rmadmin/php/tks/notify/",
+                listOf(
+                    BookReceipt.Item("Аренда ТС. Продление", 2.0, 1.00.toInt(), 2.0, "vat20"),
+                    BookReceipt.Item(
+                        "Полное страховое покрытие. Продление",
+                        1.0,
+                        1.00.toInt(),
+                        1.0,
+                        "vat20"
+                    )
+                )
+            )
+        )
+    }
 }
 
 /* "TerminalKey": "1626078414401",

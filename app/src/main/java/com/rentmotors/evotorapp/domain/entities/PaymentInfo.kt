@@ -9,5 +9,4 @@ class PaymentInfo(
     val status: String,
     val state: Boolean,
     val codeError: String
-) {
-}
+)

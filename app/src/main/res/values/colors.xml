@@ -12,6 +12,8 @@
     <color name="dark_gray">#202020</color>
     <color name="rm_green">#388E3C</color>
     <color name="green">#6AB22E</color>
+    <color name="red">#D32C0E</color>
+    <color name="dark_red">#871E0B</color>
     <color name="dark_green">#375E17</color>
     <color name="rm_orange">#F57F17</color>
 </resources>
